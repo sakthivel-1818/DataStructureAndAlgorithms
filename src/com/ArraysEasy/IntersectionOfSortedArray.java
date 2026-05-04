@@ -67,3 +67,6 @@ public class IntersectionOfSortedArray {
         opti.optimal(a, b);
     }
 }
+
+//TC --- O(n1+n2)//
+//Sc--o(1)
