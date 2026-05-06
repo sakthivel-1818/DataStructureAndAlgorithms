@@ -44,7 +44,7 @@ public class LongestSubArrayByK_Potive {
         }
         System.out.println(len);
     }
-    public static void better(int[] arr,int k)
+    public static void optimal(int[] arr,int k)
     {
         int n=arr.length;
         int left=0;int right=0;
@@ -72,7 +72,7 @@ public class LongestSubArrayByK_Potive {
     public static void main(String[] args) {
         int[] arr={10, 5, 2, 7, 1};
         int k=15;
-        better(arr,k);
+        optimal(arr,k);
     }
 }
 
