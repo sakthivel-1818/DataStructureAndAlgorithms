@@ -1,6 +1,9 @@
 package com.ArraysEasy;
 
 import java.util.*;
+
+import static java.lang.Math.*;
+
 public class LongestSubArrayByK_Potive {
     public static void brute1(int[] arr,int k)
     {
@@ -16,7 +19,7 @@ public class LongestSubArrayByK_Potive {
                 }
                 if (sum==k)
                 {
-                    len=Math.max(len,j-i+1);
+                    len= max(len,j-i+1);
                 }
             }
         }
@@ -33,7 +36,7 @@ public class LongestSubArrayByK_Potive {
                 sum+=arr[j];
                 if(sum==k)
             {
-                len=Math.max(len,j-i+1);
+                len= max(len,j-i+1);
             }
 
             }
@@ -43,35 +46,34 @@ public class LongestSubArrayByK_Potive {
     }
     public static void better(int[] arr,int k)
     {
-
-        HashMap<Long, Integer> preSumMap = new HashMap<>();
-        int maxlen=0;
-        long sum=0;
-        for(int i=0;i<arr.length;i++)
+        int n=arr.length;
+        int left=0;int right=0;
+        int sum=arr[0];
+        int len=0;
+        while(right<n)
         {
-            sum+=arr[i];
+            while (left<=right && sum>k)
+            {
+                sum-=arr[left];
+                left++;
+            }
             if (sum==k)
             {
-                maxlen=Math.max(maxlen,i+1);
+                len=Math.max(len,right-left+1);
             }
-
-            long rem = sum-k;
-
-            if (preSumMap.containsKey(rem))
-            {
-                int  len=i-preSumMap.get(rem);
-                 maxlen=Math.max(len,maxlen);
-            }
-            if (!preSumMap.containsKey(sum))
-            {
-                preSumMap.put(sum,i);
+            right++;
+            if (right<n) {
+                sum += arr[right];
             }
         }
-        System.out.println(maxlen);
+        System.out.println(len);
+
     }
     public static void main(String[] args) {
-        int[] arr={1,2,3,0,0,1,1,1,1,4,2,3};
-        int k=4;
+        int[] arr={10, 5, 2, 7, 1};
+        int k=15;
         better(arr,k);
     }
 }
+
+
